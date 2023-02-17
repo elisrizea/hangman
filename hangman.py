@@ -46,7 +46,9 @@ def hangman(count):
     while True:
         print(f'Word : {print_word}')
         # Ignore case and spaces. Prevent user multiple character input (select just first char entered)
-        letter = input('Please enter a letter:').strip().lower()[0]
+        letter = input('Please enter a letter:').strip().lower()
+        if letter != '':
+            letter=letter[0]
         tryed_letter.append(letter)
         print(f'Letter already tried :{tryed_letter}')
         print()
@@ -98,7 +100,9 @@ while True:
                 {MAG}m{BLUE}    - {MAG}M{BLUE}edium (4 wrong consecutive choices)
                 {MAG}h{BLUE}    - {MAG}H{BLUE}ard (2 wrong consecutive choices)      
                 {MAG}q{BLUE}   -  To end program type {MAG}q{BLUE}uit.
-{MAG}Enter your choice: {END}''').strip().lower()[0]
+{MAG}Enter your choice: {END}''').strip().lower()
+    if menu !='':
+        menu=menu[0]
 
     # Request input and call the necessary function
     if menu == 'e':
