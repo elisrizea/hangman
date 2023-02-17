@@ -49,7 +49,8 @@ def hangman(count):
         letter = input('Please enter a letter:').strip().lower()
         if letter != '':
             letter=letter[0]
-        tryed_letter.append(letter)
+            if letter not in tryed_letter:
+                tryed_letter.append(letter)
         print(f'Letter already tried :{tryed_letter}')
         print()
         if letter in word and letter not in print_word:
@@ -65,6 +66,11 @@ def hangman(count):
                     indexes.append(index)
                     _word = _word[:index] + '_' + _word[index + 1:]
                     print_word = print_word[:index] + letter + print_word[index + 1:]
+
+        elif letter in print_word:
+                print(f'{RED}Bad choice. You already discover this letter{END}')
+                count -= 1
+                print(f'{RED}{count} more and you loose.{END}')
 
         else:
             print(f'{RED}Bad choice.{END}')
